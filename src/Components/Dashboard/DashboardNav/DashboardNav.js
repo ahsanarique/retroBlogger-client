@@ -1,20 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import useToggle from "../../Hooks/useToggle";
+import useToggle from "../../../Hooks/useToggle";
 
-const NavigationBar = () => {
+const DashboardNav = () => {
   const [toggle, setToggle, ref] = useToggle();
 
   const hoverEffect =
     "block py-2.5 px-4 rounded transition duration-200 bg-gradient-to-r hover:from-purple-800 hover:to-purple-500 hover:text-white";
 
-  const headerFont =
-    "text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-purple-700 font-press-start";
-
   return (
     <div className="relative min-h-screen md:flex">
       <div className="bg-gray-800 text-gray-100 flex justify-between md:hidden">
-        <Link to="/" className={`${headerFont} block p-4`}>
+        <Link to="/" className="block p-4 text-white font-press-start">
           Retro Blogger
         </Link>
 
@@ -43,22 +40,21 @@ const NavigationBar = () => {
         ref={ref}
         className="sidebar bg-gray-800 text-gray-100 w-64 space-y-6 py-7 px-2 absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition duration-200 ease-in-out -translate-x-full"
       >
-        <Link to="/" className="flex items-center space-x-2 px-4">
-          <span className={`${headerFont} text-2xl`}>Retro Blogger</span>
+        <Link to="/" className="text-white flex items-center space-x-2 px-4">
+          <span className="text-2xl font-press-start">Retro Blogger</span>
         </Link>
 
         <nav className="font-press-start">
           <Link to="/" className={`${hoverEffect}`}>
             Home
           </Link>
-          <Link to="/blogs" className={`${hoverEffect}`}>
-            Blogs
+
+          <Link to="/dashboard/addBlog" className={`${hoverEffect}`}>
+            Add Blog
           </Link>
-          <Link to="/dashboard" href="" className={`${hoverEffect}`}>
-            Dashboard
-          </Link>
+
           <Link to="/login" className={`${hoverEffect}`}>
-            Login
+            Logout
           </Link>
         </nav>
       </div>
@@ -66,4 +62,4 @@ const NavigationBar = () => {
   );
 };
 
-export default NavigationBar;
+export default DashboardNav;
