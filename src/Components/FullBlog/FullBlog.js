@@ -18,7 +18,7 @@ const FullBlog = () => {
   return (
     <section className="relative min-h-screen md:flex">
       <FullBlogNav />
-      <div className="mx-5 my-10 grid  grid-cols-12 gap-8">
+      <div className="mx-5 my-10 grid  grid-cols-12 gap-4">
         <div className={`col-span-12 bg-white rounded-xl shadow-md`}>
           <img
             className="h-48 w-full object-cover "
@@ -26,7 +26,7 @@ const FullBlog = () => {
             alt="cover"
           />
 
-          <div className="h-64 p-8">
+          <div className="p-8">
             <div className="block mt-1 text-2xl leading-tight font-press-start text-black">
               {fullContent.title}
             </div>

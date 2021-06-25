@@ -12,7 +12,7 @@ const DashboardNav = () => {
     "text-transparent bg-clip-text bg-heading font-press-start";
 
   return (
-    <div className="relative min-h-screen md:flex">
+    <React.Fragment>
       <div className="bg-gray-800 text-gray-100 flex justify-between md:hidden">
         <Link to="/" className={`${headerFont} block p-4`}>
           Retro Blogger
@@ -52,6 +52,10 @@ const DashboardNav = () => {
             Home
           </Link>
 
+          <Link to="/dashboard/blogList" className={`${hoverEffect}`}>
+            Blog List
+          </Link>
+
           <Link to="/dashboard/addBlog" className={`${hoverEffect}`}>
             Add Blog
           </Link>
@@ -61,7 +65,7 @@ const DashboardNav = () => {
           </Link>
         </nav>
       </div>
-    </div>
+    </React.Fragment>
   );
 };
 

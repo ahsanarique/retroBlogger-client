@@ -10,7 +10,7 @@ const Home = () => {
     <section className="relative min-h-screen md:flex">
       <NavigationBar />
 
-      <div className="mx-5 my-10 grid  grid-cols-12 gap-8">
+      <div className="mx-5 my-10 grid  grid-cols-12 gap-4">
         {homepageBlogs.map((blog, i) => (
           <div
             key={i + blog.id}

@@ -5,9 +5,9 @@ const Login = () => {
   return (
     <section className="relative min-h-screen md:flex">
       <NavigationBar />
-      <div className="mx-5 my-10 grid  grid-cols-12 gap-8">
-        <div className={`col-span-12 p-8 bg-white rounded-xl shadow-md`}>
-          <form className="mt-8 space-y-6">
+      <div className="mx-5 my-10 grid  grid-cols-12 gap-4 w-full h-80">
+        <div className={`col-span-11 bg-white rounded-xl shadow-md`}>
+          <form className="mt-8 space-y-6 p-8">
             <div>
               <label htmlFor="email-address" className="sr-only">
                 Email address
