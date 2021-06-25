@@ -1,17 +1,20 @@
 import { Switch, Route } from "react-router-dom";
-import NavigationBar from "./Components/NavigationBar/NavigationBar";
 import Home from "./Components/Home/Home";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 import Dashboard from "./Components/Dashboard/Dashboard/Dashboard";
 import Login from "./Components/Login/Login";
+import FullBlog from "./Components/FullBlog/FullBlog";
 
 function App() {
   return (
-    <main>
+    <main className="bg-main">
       <Switch>
         <Route exact path="/">
-          <NavigationBar />
           <Home />
+        </Route>
+
+        <Route path="/blog=:id">
+          <FullBlog />
         </Route>
 
         <PrivateRoute path="/dashboard">

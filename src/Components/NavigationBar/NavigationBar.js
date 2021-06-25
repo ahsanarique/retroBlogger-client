@@ -6,18 +6,17 @@ const NavigationBar = () => {
   const [toggle, setToggle, ref] = useToggle();
 
   const hoverEffect =
-    "block py-2.5 px-4 rounded transition duration-200 bg-gradient-to-r hover:from-purple-800 hover:to-purple-500 hover:text-white";
+    "block py-2.5 px-4 rounded transition duration-200 bg-gradient-to-r hover:bg-hover hover:text-white";
 
   const headerFont =
-    "text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-purple-700 font-press-start";
+    "text-transparent bg-clip-text bg-heading font-press-start";
 
   return (
-    <div className="relative min-h-screen md:flex">
+    <React.Fragment>
       <div className="bg-gray-800 text-gray-100 flex justify-between md:hidden">
         <Link to="/" className={`${headerFont} block p-4`}>
           Retro Blogger
         </Link>
-
         <button
           onClick={() => setToggle(!toggle)}
           className="mobile-menu-button p-4 focus:outline-none focus:bg-gray-700"
@@ -51,9 +50,7 @@ const NavigationBar = () => {
           <Link to="/" className={`${hoverEffect}`}>
             Home
           </Link>
-          <Link to="/blogs" className={`${hoverEffect}`}>
-            Blogs
-          </Link>
+
           <Link to="/dashboard" href="" className={`${hoverEffect}`}>
             Dashboard
           </Link>
@@ -62,7 +59,7 @@ const NavigationBar = () => {
           </Link>
         </nav>
       </div>
-    </div>
+    </React.Fragment>
   );
 };
 

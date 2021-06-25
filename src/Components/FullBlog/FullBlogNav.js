@@ -1,23 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import useToggle from "../../../Hooks/useToggle";
+import useToggle from "../../Hooks/useToggle";
 
-const DashboardNav = () => {
+const FullBlogNav = () => {
   const [toggle, setToggle, ref] = useToggle();
 
   const hoverEffect =
-    "block py-2.5 px-4 rounded transition duration-200 hover:bg-hover hover:text-white";
+    "block py-2.5 px-4 rounded transition duration-200 bg-gradient-to-r hover:bg-hover hover:text-white";
 
   const headerFont =
     "text-transparent bg-clip-text bg-heading font-press-start";
 
   return (
-    <div className="relative min-h-screen md:flex">
+    <React.Fragment>
       <div className="bg-gray-800 text-gray-100 flex justify-between md:hidden">
         <Link to="/" className={`${headerFont} block p-4`}>
           Retro Blogger
         </Link>
-
         <button
           onClick={() => setToggle(!toggle)}
           className="mobile-menu-button p-4 focus:outline-none focus:bg-gray-700"
@@ -52,17 +51,16 @@ const DashboardNav = () => {
             Home
           </Link>
 
-          <Link to="/dashboard/addBlog" className={`${hoverEffect}`}>
-            Add Blog
+          <Link to="/dashboard" href="" className={`${hoverEffect}`}>
+            Dashboard
           </Link>
-
           <Link to="/login" className={`${hoverEffect}`}>
             Logout
           </Link>
         </nav>
       </div>
-    </div>
+    </React.Fragment>
   );
 };
 
-export default DashboardNav;
+export default FullBlogNav;
