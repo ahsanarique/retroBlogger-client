@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import useToggle from "../../Hooks/useToggle";
+import { Context } from "../../Context/Context";
 
 const NavigationBar = () => {
   const [toggle, setToggle, ref] = useToggle();
+  const { loginStatus, setLoginStatus } = useContext(Context);
 
   const hoverEffect =
     "block py-2.5 px-4 rounded transition duration-200 bg-gradient-to-r hover:bg-hover hover:text-white";
@@ -51,12 +53,26 @@ const NavigationBar = () => {
             Home
           </Link>
 
-          <Link to="/dashboard" href="" className={`${hoverEffect}`}>
-            Dashboard
-          </Link>
-          <Link to="/login" className={`${hoverEffect}`}>
-            Login
-          </Link>
+          {loginStatus && (
+            <Link to="/dashboard" href="" className={`${hoverEffect}`}>
+              Dashboard
+            </Link>
+          )}
+
+          {!loginStatus && (
+            <Link to="/login" className={`${hoverEffect}`}>
+              Login
+            </Link>
+          )}
+
+          {loginStatus && (
+            <p
+              onClick={() => setLoginStatus(false)}
+              className={`${hoverEffect}`}
+            >
+              Logout
+            </p>
+          )}
         </nav>
       </div>
     </React.Fragment>

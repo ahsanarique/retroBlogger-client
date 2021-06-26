@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router";
-import FullBlogNav from "./FullBlogNav";
+import NavigationBar from "../NavigationBar/NavigationBar";
 import { Context } from "../../Context/Context";
 
 const FullBlog = () => {
@@ -17,7 +17,7 @@ const FullBlog = () => {
 
   return (
     <section className="relative min-h-screen md:flex">
-      <FullBlogNav />
+      <NavigationBar />
       <div className="mx-5 my-10 grid  grid-cols-12 gap-4">
         <div className={`col-span-12 bg-white rounded-xl shadow-md`}>
           <img

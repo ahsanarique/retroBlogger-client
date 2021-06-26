@@ -1,13 +1,58 @@
-import React from "react";
+import React, { useState, useContext } from "react";
+import { useForm } from "react-hook-form";
+import axios from "axios";
+import { Context } from "../../../Context/Context";
 
 const AddBlog = () => {
+  const { setAddedBlog } = useContext(Context);
+  const [coverImgURL, setCoverImgURL] = useState("");
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onBlogSubmit = (data) => {
+    const blogData = {
+      coverImage: coverImgURL,
+      title: data.title,
+      mainContent: data.mainContent,
+    };
+
+    setAddedBlog(blogData);
+  };
+
+  const handleImageUpload = (event) => {
+    const imageData = new FormData();
+
+    imageData.set("key", "24e85e60f588cdb7cb95cd39f1c3953b");
+    imageData.append("image", event.target.files[0]);
+
+    axios
+      .post("https://api.imgbb.com/1/upload", imageData)
+      .then((response) => setCoverImgURL(response.data.data.display_url))
+      .catch((error) => {
+        alert(error);
+      });
+  };
+
   return (
     <div className="mx-5 my-10 grid  grid-cols-12 gap-4 w-full">
       <div className={`col-span-11 bg-white rounded-xl shadow-md`}>
-        <form className="mt-8 space-y-6 p-8">
+        <form
+          onSubmit={handleSubmit(onBlogSubmit)}
+          className="mt-8 space-y-6 p-8"
+        >
           <div>
             <label className="block text-sm font-press-start text-gray-700">
-              Add Cover Photo
+              Add Cover Photo:{" "}
+              {errors.fileUpload && (
+                <span className="text-red-500">required</span>
+              )}
+              {coverImgURL && (
+                <span className="text-green-500">Image Uploaded</span>
+              )}
             </label>
             <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
               <div className="space-y-1 text-center">
@@ -33,13 +78,12 @@ const AddBlog = () => {
                     <span>Upload a file</span>
                     <input
                       id="file-upload"
-                      name="file-upload"
+                      {...register("fileUpload", { required: true })}
                       type="file"
                       className="sr-only"
-                      required
+                      onChange={handleImageUpload}
                     />
                   </label>
-                  <p className="pl-1">or drag and drop</p>
                 </div>
                 <p className="text-xs text-gray-500">
                   PNG, JPG, GIF up to 10MB
@@ -47,25 +91,32 @@ const AddBlog = () => {
               </div>
             </div>
           </div>
+
           <div>
             <label className="block text-sm font-press-start text-gray-700">
-              Add Blog Title
+              Add Blog Title:{" "}
+              {errors.title && <span className="text-red-500">required</span>}
             </label>
             <textarea
+              {...register("title", { required: true })}
               className="resize border rounded-md w-full"
-              required
             ></textarea>
           </div>
+
           <div>
             <label className="block text-sm font-press-start text-gray-700">
-              Add Main Content
+              Add Main Content:{" "}
+              {errors.mainContent && (
+                <span className="text-red-500">required</span>
+              )}
             </label>
             <textarea
+              {...register("mainContent", { required: true })}
               rows="30"
               className="resize border rounded-md w-full"
-              required
             ></textarea>
           </div>
+
           <div>
             <button
               type="submit"
