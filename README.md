@@ -17,6 +17,6 @@
 
 - While Logged in, Admin can:
   - Add new blog (cover image, title, main content) that dynamically gets added to homepage
-  - Only admins can post blogs
+  - Only admins can post blogs and can delete specific blogs
 - Visitors can view the list of blogs in home page
 - Clicking on blog title/image/view more button takes users to the full blog page
