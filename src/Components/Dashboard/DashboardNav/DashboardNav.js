@@ -62,9 +62,12 @@ const DashboardNav = () => {
             Add Blog
           </Link>
 
-          <p onClick={() => setLoginStatus(false)} className={`${hoverEffect}`}>
+          <button
+            onClick={() => setLoginStatus(false)}
+            className={`${hoverEffect} w-full text-left`}
+          >
             Logout
-          </p>
+          </button>
         </nav>
       </div>
     </React.Fragment>

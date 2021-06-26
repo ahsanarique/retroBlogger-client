@@ -6,7 +6,7 @@ import { Context } from "../../Context/Context";
 import axios from "axios";
 
 const Login = () => {
-  const { setLoginStatus } = useContext(Context);
+  const { setLoginStatus, setLoggedInUser } = useContext(Context);
 
   const history = useHistory();
   const location = useLocation();
@@ -19,7 +19,7 @@ const Login = () => {
   } = useForm();
 
   const onLoginSubmit = (data) => {
-    const url = "";
+    const url = "http://localhost:5000/login";
 
     const userData = {
       email: data.email,
@@ -36,16 +36,17 @@ const Login = () => {
       axios
         .post(url, userData)
         .then((res) => {
-          const token = res.data["access_token"];
-          localStorage.setItem("authorization", token);
-          setLoginStatus(true);
-          handleResponse(true);
+          if (res) {
+            setLoginStatus(true);
+            handleResponse(true);
+          }
         })
         .catch((error) => {
           alert(error.message);
         });
     }
 
+    setLoggedInUser(userData.email);
     loginUser();
   };
 

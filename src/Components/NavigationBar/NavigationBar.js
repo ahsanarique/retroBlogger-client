@@ -66,12 +66,12 @@ const NavigationBar = () => {
           )}
 
           {loginStatus && (
-            <p
+            <button
               onClick={() => setLoginStatus(false)}
-              className={`${hoverEffect}`}
+              className={`${hoverEffect} w-full text-left`}
             >
               Logout
-            </p>
+            </button>
           )}
         </nav>
       </div>

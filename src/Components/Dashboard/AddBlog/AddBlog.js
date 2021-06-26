@@ -4,7 +4,7 @@ import axios from "axios";
 import { Context } from "../../../Context/Context";
 
 const AddBlog = () => {
-  const { setAddedBlog } = useContext(Context);
+  const { loggedInUser, setBlogAdded } = useContext(Context);
   const [coverImgURL, setCoverImgURL] = useState("");
 
   const {
@@ -14,13 +14,21 @@ const AddBlog = () => {
   } = useForm();
 
   const onBlogSubmit = (data) => {
+    const url = "http://localhost:5000/addBlog";
+
     const blogData = {
+      email: loggedInUser,
       coverImage: coverImgURL,
       title: data.title,
       mainContent: data.mainContent,
     };
 
-    setAddedBlog(blogData);
+    axios
+      .post(url, blogData)
+      .then((res) => alert("Blog Added"))
+      .catch((error) => alert(error.message));
+
+    setBlogAdded((prev) => prev + 1);
   };
 
   const handleImageUpload = (event) => {

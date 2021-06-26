@@ -10,8 +10,8 @@ const FullBlog = () => {
   const [fullContent, setFullContent] = useState({});
 
   useEffect(() => {
-    if (blogList.length) {
-      setFullContent(blogList.find((blog) => blog.id === Number(id)));
+    if (blogList.length && id) {
+      setFullContent(blogList.find((blog) => blog._id === id));
     }
   }, [id, blogList]);
 
@@ -31,7 +31,7 @@ const FullBlog = () => {
               {fullContent.title}
             </div>
             <p className="font-quicksand mt-2 text-gray-500">
-              {fullContent.blog}
+              {fullContent.mainContent}
             </p>
           </div>
         </div>

@@ -13,10 +13,10 @@ const Home = () => {
       <div className="mx-5 my-10 grid  grid-cols-12 gap-4">
         {homepageBlogs.map((blog, i) => (
           <div
-            key={i + blog.id}
+            key={i + blog._id}
             className={`col-span-12 lg:col-span-4 sm:col-span-6  bg-white rounded-xl shadow-md overflow-hidden`}
           >
-            <Link to={`blog=${blog.id}`}>
+            <Link to={`blog=${blog._id}`}>
               <img
                 className="h-48 w-full object-cover "
                 src={blog.coverImage}
@@ -26,15 +26,17 @@ const Home = () => {
 
             <div className="h-64 overflow-hidden p-8">
               <Link
-                to={`blog=${blog.id}`}
+                to={`blog=${blog._id}`}
                 className="font-press-start block mt-1 text-md leading-tight font-medium text-black hover:underline"
               >
                 {blog.title}
               </Link>
-              <p className="font-quicksand mt-2 text-gray-500">{blog.blog}</p>
+              <p className="font-quicksand mt-2 text-gray-500">
+                {blog.mainContent}
+              </p>
             </div>
 
-            <Link to={`/blog=${blog.id}`}>
+            <Link to={`/blog=${blog._id}`}>
               <button className="font-press-start m-5 bg-button hover:bg-hover py-2 px-4 rounded">
                 Read Full Blog
               </button>
