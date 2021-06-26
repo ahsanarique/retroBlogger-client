@@ -8,7 +8,7 @@ const AllBlogs = () => {
 
   useEffect(() => {
     if (blogId) {
-      const url = `http://localhost:5000/deleteBlog/${blogId}`;
+      const url = `https://boiling-sierra-09839.herokuapp.com/deleteBlog/${blogId}`;
       axios
         .delete(url, { params: { id: blogId } })
         .then((res) => {

@@ -13,7 +13,7 @@ const ContextProvider = ({ children }) => {
   const [blogsPerPage, setBlogsPerPage] = useState(6);
 
   useEffect(() => {
-    const url = "http://localhost:5000/blogList";
+    const url = "https://boiling-sierra-09839.herokuapp.com/blogList";
 
     axios.get(url).then((res) => setBlogList(res.data));
   }, [blogAdded]);

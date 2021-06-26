@@ -14,7 +14,7 @@ const AddBlog = () => {
   } = useForm();
 
   const onBlogSubmit = (data) => {
-    const url = "http://localhost:5000/addBlog";
+    const url = "https://boiling-sierra-09839.herokuapp.com/addBlog";
 
     const blogData = {
       email: loggedInUser,
